@@ -29,16 +29,16 @@ help:
 
 build:
     hubake build apps/{{app}}-app.kdl
-    hubake pack-hex .work/{{app}}/final/ {{app}}-output.hex
+    hubake pack-hex .work/{{app}}/final/ {{app}}-output.hex -g {{app}}-gdbconfig
 
 reboot:
     picotool reboot -u -c arm
 
-flash:
+flash: build
     humility-pico -a {{app}}-build.zip flash -F
     humility-pico -a {{app}}-build.zip tasks
 
-entry-points:
+entry-points: build
     @for elf in .work/{{app}}/final/*; do \
         name=$(basename "$elf"); \
         ep=$(arm-none-eabi-readelf -h "$elf" | grep 'Entry point address' | awk '{print $$4}'); \
@@ -46,10 +46,10 @@ entry-points:
     done
 
 gdb:
-    arm-none-eabi-gdb -x gdbconfig
+    arm-none-eabi-gdb -x {{app}}-gdbconfig
 
-openocd:
-    openocd -f openocd.cfg -c "program {{app}}-output.hex verify"
+openocd: build
+    openocd-pico -f openocd.cfg -c "program {{app}}-output.hex verify"
 
 clean:
     cargo clean

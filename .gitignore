@@ -28,4 +28,4 @@ docs/notes.md
 .work/
 *-build.zip
 *.hex
-gdbconfig
+*gdbconfig

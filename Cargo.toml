@@ -3,7 +3,7 @@ resolver = "2"
 members = ["blinky"]
 
 [workspace.dependencies]
-userlib = { git = "https://github.com/Karthik-d-k/exhubris-riscv-hazard3", rev="54b87438a6c1658a13355add40248c21c9c19990" } # branch: rp235x-cortex-m33
+userlib = { git = "https://github.com/Karthik-d-k/exhubris-riscv-hazard3", rev = "09d31a77f47521177cfb3309a6cc71e978779ff8" } # branch: rp235x-cortex-m33
 
 [profile.release]
 debug = true
