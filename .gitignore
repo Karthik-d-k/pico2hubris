@@ -27,3 +27,5 @@ docs/notes.md
 # hubris outputs
 .work/
 *-build.zip
+*.hex
+gdbconfig

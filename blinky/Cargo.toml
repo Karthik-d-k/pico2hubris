@@ -4,6 +4,7 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
+cortex-m = { version = "0.7", features = ["inline-asm"] }
 userlib = { workspace = true, features = ["no-panic"] }
 rp235x-pac = { version = "0.1", default-features = false }
 

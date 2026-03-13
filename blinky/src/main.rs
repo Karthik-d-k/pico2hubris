@@ -5,14 +5,8 @@
 #![no_std]
 #![no_main]
 
+use cortex_m::asm;
 use rp235x_pac::io_bank0::gpio::gpio_ctrl::FUNCSEL_A;
-
-/// Simple busy-wait delay (not cycle-accurate, but sufficient for blinking)
-fn delay(count: u32) {
-    for _ in 0..count {
-        core::hint::black_box(());
-    }
-}
 
 // Ensure we halt the program on panic (if we don't mention this crate it won't be linked)
 use userlib as _;
@@ -65,10 +59,10 @@ fn main() -> ! {
     loop {
         // Turn LED ON
         sio.gpio_out_set().write(|w| unsafe { w.bits(mask) });
-        delay(50_000);
+        asm::delay(1_20_30_000);
 
         // Turn LED OFF
         sio.gpio_out_clr().write(|w| unsafe { w.bits(mask) });
-        delay(50_000);
+        asm::delay(1_20_30_000);
     }
 }
