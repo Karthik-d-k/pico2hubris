@@ -1,0 +1,62 @@
+// App name is used for output files etc. It must be the first non-blank
+// non-comment line in the file.
+app blinky
+
+// Currently the board information is inlined. It would be nice to refer to an
+// external file, like we already do for chip definitions.
+board rp2350-pico2 {
+    chip "proj:apps/blinky-chip.kdl"
+}
+
+// Instructions for building the kernel.
+kernel {
+    git-crate {
+        repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
+        package kernel-generic-cortex-m33
+        rev "54b87438a6c1658a13355add40248c21c9c19990" // branch: rp235x-cortex-m33
+    }
+    no-default-features
+    // The kernel itself should provide this information eventually, but for now
+    // we have to state it:
+    stack-size 1024
+}
+
+// Supervisor task. Every nontrivial application needs one. The exhubris
+// minisuper implementation is good for most simple systems.
+task super {
+    git-crate {
+        repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
+        package minisuper
+        rev "54b87438a6c1658a13355add40248c21c9c19990" // branch: rp235x-cortex-m33
+    }
+    priority 0
+
+    // Eventually, tasks should be able to indicate their stack requirement
+    // somehow, but for now we have to state it:
+    stack-size 192
+}
+
+// blinky task. Blinks an external led
+task blinky {
+    workspace-crate blinky
+    stack-size 128 // 256 bytes on a part with an FPU
+    priority 1
+    uses-peripheral sio
+    uses-peripheral io_bank0
+    uses-peripheral pads_bank0
+    uses-peripheral resets
+}
+
+// Idle task. Every application needs one, few applications want to write their
+// own. We pull in a standard one from git:
+task idle {
+    git-crate {
+        repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
+        package idle
+        rev "54b87438a6c1658a13355add40248c21c9c19990" // branch: rp235x-cortex-m33
+    }
+    stack-size 128
+    priority 2
+    // This makes Humility work a _lot_ better.
+    features insomniac
+}

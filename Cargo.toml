@@ -1,0 +1,10 @@
+[workspace]
+resolver = "2"
+members = ["blinky"]
+
+[workspace.dependencies]
+userlib = { git = "https://github.com/Karthik-d-k/exhubris-riscv-hazard3", rev="54b87438a6c1658a13355add40248c21c9c19990" } # branch: rp235x-cortex-m33
+
+[profile.release]
+debug = true
+lto = true

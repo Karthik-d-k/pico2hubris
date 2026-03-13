@@ -1,0 +1,49 @@
+chip "cortex-m33"
+target-triple "thumbv8m.main-none-eabihf"
+vector-table-size 0x48 // .pico-sdk\sdk\2.1.1\src\rp2350\hardware_regs\include\hardware\platform_defs.h
+probe-rs-name "RP235x"
+
+compatible {
+    - "rp2350-pico2"
+    - "rp2350-pico2-w"
+}
+
+memory {
+    region "vectors" {
+        base 0x1000_0000 // XIP_BASE
+        size 0x180 // enlarged to accommodate header + IMAGE_DEF
+        read
+    }
+    region "flash" {
+        base 0x1000_0180 // SRAM_BASE
+        size 0x003F_FE80 // 4MB (0x0040_0000) (FLASH) - 0x180 (vectors) = 0x3FFE80
+        read
+        execute
+    }
+    region "ram" {
+        base 0x2000_0000
+        size 0x0008_2000 // Logically, there is a single 520KB contiguous memory
+        read
+        write
+    }
+}
+
+peripheral "sio" {
+    base 0xd000_0000
+    size 0x200        // Rounded from 0x1E8 (488 bytes)
+}
+
+peripheral "io_bank0" {
+    base 0x4002_8000
+    size 0x400       // Rounded from 0x320 (800 bytes) 
+}
+
+peripheral "pads_bank0" {
+    base 0x4003_8000
+    size 0x100       // Rounded from 0xCC (204 bytes) 
+}
+
+peripheral "resets" {
+    base 0x4002_0000
+    size 0x20
+}

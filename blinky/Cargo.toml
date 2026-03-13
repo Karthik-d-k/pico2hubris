@@ -1,0 +1,13 @@
+[package]
+name = "blinky"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+userlib = { workspace = true, features = ["no-panic"] }
+rp235x-pac = { version = "0.1", default-features = false }
+
+[[bin]]
+name = "blinky"
+test = false
+bench = false

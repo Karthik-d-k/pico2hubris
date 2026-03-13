@@ -1,0 +1,6 @@
+# Tells hubake what version of the tools we expect.
+
+[system]
+source = "git"
+repo = "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
+rev = "289fc06c4dfc86439e227adfb57d5ad03dc2e18b" # branch: windows
