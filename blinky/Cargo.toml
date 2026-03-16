@@ -4,9 +4,9 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-cortex-m = { version = "0.7", features = ["inline-asm"] }
+cortex-m = { workspace = true, features = ["inline-asm"] }
 userlib = { workspace = true, features = ["no-panic"] }
-rp235x-pac = { version = "0.1", default-features = false }
+rp235x-pac = { workspace = true }
 
 [[bin]]
 name = "blinky"

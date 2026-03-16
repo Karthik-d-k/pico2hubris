@@ -112,7 +112,7 @@ checksum = "388a1df253eca08550bef6c72392cfe7c30914bf41df5269b68cbd6ff8f570a3"
 [[package]]
 name = "userlib"
 version = "0.1.0"
-source = "git+https://github.com/Karthik-d-k/exhubris-riscv-hazard3?rev=09d31a77f47521177cfb3309a6cc71e978779ff8#09d31a77f47521177cfb3309a6cc71e978779ff8"
+source = "git+https://github.com/Karthik-d-k/exhubris-riscv-hazard3?rev=3c1e01345ad06f8fcb8b4769a60e99faefb5032d#3c1e01345ad06f8fcb8b4769a60e99faefb5032d"
 dependencies = [
  "bitflags",
  "cfg-if",
