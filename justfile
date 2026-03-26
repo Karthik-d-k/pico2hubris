@@ -34,11 +34,11 @@ build:
 reboot:
     picotool reboot -u -c arm
 
-flash: build
+flash:
     humility-pico -a {{app}}-build.zip flash -F
     humility-pico -a {{app}}-build.zip tasks
 
-entry-points: build
+entry-points:
     @for elf in .work/{{app}}/final/*; do \
         name=$(basename "$elf"); \
         ep=$(arm-none-eabi-readelf -h "$elf" | grep 'Entry point address' | awk '{print $$4}'); \
@@ -48,7 +48,7 @@ entry-points: build
 gdb:
     arm-none-eabi-gdb -x {{app}}-gdbconfig
 
-openocd: build
+openocd:
     openocd-pico -f openocd.cfg -c "program {{app}}-output.hex verify"
 
 clean:
