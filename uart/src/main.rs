@@ -37,9 +37,7 @@ fn gpio_configure(io_bank0: &IO_BANK0, pads_bank0: &PADS_BANK0, pin: usize, func
             .write_with_zero(|w| w.funcsel().variant(funcsel));
     };
 
-    pads_bank0
-        .gpio(pin)
-        .modify(|_, w| w.iso().clear_bit());
+    pads_bank0.gpio(pin).modify(|_, w| w.iso().clear_bit());
 }
 
 #[unsafe(export_name = "main")]
@@ -82,10 +80,7 @@ fn main() -> ! {
         .write(|w| unsafe { w.baud_divfrac().bits(33) });
 
     // 8 data bits, no parity, 1 stop bit, FIFO enabled (latches baud divisors)
-    uart0.uartlcr_h().write(|w| {
-        unsafe { w.wlen().bits(0b11) };
-        w.fen().set_bit()
-    });
+    uart0.uartlcr_h().write(|w| unsafe { w.wlen().bits(0b11) });
 
     // Enable UART, TX, and RX
     uart0.uartcr().write(|w| {
