@@ -1,6 +1,6 @@
 [workspace]
 resolver = "2"
-members = ["blinky"]
+members = ["blinky", "uart"]
 
 [workspace.dependencies]
 cortex-m = { version = "0.7", default-features = false }
