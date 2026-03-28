@@ -45,7 +45,7 @@ peripheral "pads_bank0" {
 
 peripheral "resets" {
     base 0x4002_0000
-    size 0x10       // Rounded from 0xC (12 bytes)
+    size 0x20       // Rounded from 0xC (12 bytes) (minimum size for PMP is 32 bytes)
 }
 
 peripheral "uart0" {
