@@ -15,6 +15,7 @@ use userlib as _;
 fn main() -> ! {
     // `on-board LED` is on GPIO25 on the Pico 2
     const LED_PIN: usize = 25;
+    const BLINK_DELAY: u32 = 6_000_000; // 0.5s at 12MHz
     let mask = 1u32 << LED_PIN;
 
     // Get peripheral access using the PAC
@@ -59,10 +60,10 @@ fn main() -> ! {
     loop {
         // Turn LED ON
         sio.gpio_out_set().write(|w| unsafe { w.bits(mask) });
-        asm::delay(1_20_30_000);
+        asm::delay(BLINK_DELAY);
 
         // Turn LED OFF
         sio.gpio_out_clr().write(|w| unsafe { w.bits(mask) });
-        asm::delay(1_20_30_000);
+        asm::delay(BLINK_DELAY);
     }
 }
