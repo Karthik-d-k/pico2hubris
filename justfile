@@ -54,3 +54,11 @@ openocd:
 clean:
     cargo clean
     rm -rf .work/{{app}}/
+    rm -rf {{app}}-build.zip 
+    rm -f {{app}}-output.hex {{app}}-gdbconfig
+
+clean-all:
+    cargo clean
+    rm -rf .work/
+    rm -rf *-build.zip 
+    rm -f *-output.hex *-gdbconfig
