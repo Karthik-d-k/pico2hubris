@@ -1,7 +1,7 @@
 app pingpong
 
 board rp2350-pico2 {
-    chip "proj:apps/blinky-chip.kdl"
+    chip "proj:chips/rp2350.kdl"
 }
 
 kernel {

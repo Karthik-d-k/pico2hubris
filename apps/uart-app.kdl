@@ -1,7 +1,7 @@
 app uart
 
 board rp2350-pico2 {
-    chip "proj:apps/uart-chip.kdl"
+    chip "proj:chips/rp2350.kdl"
 }
 
 kernel {

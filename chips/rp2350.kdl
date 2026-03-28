@@ -45,5 +45,10 @@ peripheral "pads_bank0" {
 
 peripheral "resets" {
     base 0x4002_0000
-    size 0x20
+    size 0x10       // Rounded from 0xC (12 bytes)
+}
+
+peripheral "uart0" {
+    base 0x4007_0000
+    size 0x1000
 }

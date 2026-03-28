@@ -5,7 +5,7 @@ app blinky
 // Currently the board information is inlined. It would be nice to refer to an
 // external file, like we already do for chip definitions.
 board rp2350-pico2 {
-    chip "proj:apps/blinky-chip.kdl"
+    chip "proj:chips/rp2350.kdl"
 }
 
 // Instructions for building the kernel.
