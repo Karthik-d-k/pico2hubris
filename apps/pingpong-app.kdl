@@ -1,0 +1,53 @@
+app pingpong
+
+board rp2350-pico2 {
+    chip "proj:apps/blinky-chip.kdl"
+}
+
+kernel {
+    git-crate {
+        repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
+        package kernel-generic-cortex-m33
+        rev "6c1e6a3a1239356e75499a3e25c26a46170f4b36" // branch: rp235x-cortex-m33
+    }
+    no-default-features
+    stack-size 1024
+}
+
+task super {
+    git-crate {
+        repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
+        package minisuper
+        rev "6c1e6a3a1239356e75499a3e25c26a46170f4b36" // branch: rp235x-cortex-m33
+    }
+    priority 0
+    stack-size 192
+}
+
+task pong {
+    workspace-crate pong
+    stack-size 256
+    priority 1
+    uses-peripheral sio
+    uses-peripheral io_bank0
+    uses-peripheral pads_bank0
+    uses-peripheral resets
+}
+
+task ping {
+    workspace-crate ping
+    stack-size 256
+    priority 2
+    uses-task pong
+}
+
+task idle {
+    git-crate {
+        repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
+        package idle
+        rev "6c1e6a3a1239356e75499a3e25c26a46170f4b36" // branch: rp235x-cortex-m33
+    }
+    stack-size 128
+    priority 3
+    features insomniac
+}

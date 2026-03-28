@@ -1,0 +1,14 @@
+[package]
+name = "pong"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+cortex-m = { workspace = true, features = ["inline-asm"] }
+userlib = { workspace = true, features = ["no-panic"] }
+rp235x-pac = { workspace = true }
+
+[[bin]]
+name = "pong"
+test = false
+bench = false

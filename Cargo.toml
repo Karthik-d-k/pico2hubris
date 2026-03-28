@@ -1,12 +1,13 @@
 [workspace]
 resolver = "2"
-members = ["blinky", "uart"]
+members = ["blinky", "uart", "ping", "pong"]
 
 [workspace.dependencies]
 cortex-m = { version = "0.7", default-features = false }
 cortex-m-rt = { version = "0.7", default-features = false }
 rp235x-pac = { version = "0.1", default-features = false }
 userlib = { git = "https://github.com/Karthik-d-k/exhubris-riscv-hazard3", rev = "3c1e01345ad06f8fcb8b4769a60e99faefb5032d", default-features = false } # branch: rp235x-cortex-m33
+hubris-task-slots = { git = "https://github.com/Karthik-d-k/exhubris-riscv-hazard3", rev = "3c1e01345ad06f8fcb8b4769a60e99faefb5032d", default-features = false }
 
 [profile.release]
 debug = true
