@@ -31,7 +31,7 @@ fn main() -> ! {
             }
         }
 
-        // Wait 3 seconds before sending next count
+        // Wait for few seconds before sending next count
         asm::delay(PAUSE_DELAY);
 
         // Increment counter, wrap back to 1 after 10
