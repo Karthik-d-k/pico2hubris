@@ -1,0 +1,14 @@
+[package]
+name = "uptime"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+userlib = { workspace = true, features = ["no-panic"] }
+hubris-notifications = { workspace = true }
+rp235x-pac = { workspace = true }
+
+[[bin]]
+name = "uptime"
+test = false
+bench = false

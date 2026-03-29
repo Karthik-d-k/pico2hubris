@@ -1,0 +1,15 @@
+[package]
+name = "heartbeat"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+cortex-m = { workspace = true, features = ["inline-asm"] }
+userlib = { workspace = true, features = ["no-panic"] }
+hubris-notifications = { workspace = true }
+rp235x-pac = { workspace = true }
+
+[[bin]]
+name = "heartbeat"
+test = false
+bench = false

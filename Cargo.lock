@@ -48,6 +48,15 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "9330f8b2ff13f34540b44e946ef35111825727b38d33286ef986142615121801"
 
 [[package]]
+name = "convert_case"
+version = "0.6.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "ec182b0ca2f35d8fc196cf3404988fd8b8c739a4d270ff118a398feb0cbec1ca"
+dependencies = [
+ "unicode-segmentation",
+]
+
+[[package]]
 name = "cortex-m"
 version = "0.7.7"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -67,6 +76,26 @@ checksum = "35949884794ad573cf46071e41c9b60efb0cb311e3ca01f7af807af1debc66ff"
 dependencies = [
  "nb 0.1.3",
  "void",
+]
+
+[[package]]
+name = "heartbeat"
+version = "0.1.0"
+dependencies = [
+ "cortex-m",
+ "hubris-notifications",
+ "rp235x-pac",
+ "userlib",
+]
+
+[[package]]
+name = "hubris-notifications"
+version = "0.1.0"
+source = "git+https://github.com/Karthik-d-k/exhubris-riscv-hazard3?rev=3c1e01345ad06f8fcb8b4769a60e99faefb5032d#3c1e01345ad06f8fcb8b4769a60e99faefb5032d"
+dependencies = [
+ "convert_case",
+ "ron",
+ "userlib",
 ]
 
 [[package]]
@@ -229,6 +258,21 @@ name = "unicode-ident"
 version = "1.0.24"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "e6e4313cd5fcd3dad5cafa179702e2b244f760991f45397d14d4ebf38247da75"
+
+[[package]]
+name = "unicode-segmentation"
+version = "1.13.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "9629274872b2bfaf8d66f5f15725007f635594914870f65218920345aa11aa8c"
+
+[[package]]
+name = "uptime"
+version = "0.1.0"
+dependencies = [
+ "hubris-notifications",
+ "rp235x-pac",
+ "userlib",
+]
 
 [[package]]
 name = "userlib"

@@ -1,0 +1,58 @@
+app heartbeat
+
+board rp2350-pico2 {
+    chip "proj:chips/rp2350.kdl"
+}
+
+kernel {
+    git-crate {
+        repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
+        package kernel-generic-cortex-m33
+        rev "899ec78cf44ff0143959d9486b45ccd9469b8af2" // branch: rp235x-cortex-m33
+    }
+    no-default-features
+    stack-size 1024
+}
+
+task super {
+    git-crate {
+        repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
+        package minisuper
+        rev "6c1e6a3a1239356e75499a3e25c26a46170f4b36" // branch: rp235x-cortex-m33
+    }
+    priority 0
+    stack-size 192
+}
+
+task heartbeat {
+    workspace-crate heartbeat
+    stack-size 256
+    priority 1
+    notification timer
+    uses-peripheral sio
+    uses-peripheral io_bank0
+    uses-peripheral pads_bank0
+    uses-peripheral resets
+}
+
+task uptime {
+    workspace-crate uptime
+    stack-size 512
+    priority 2
+    notification timer
+    uses-peripheral io_bank0
+    uses-peripheral pads_bank0
+    uses-peripheral resets
+    uses-peripheral uart0
+}
+
+task idle {
+    git-crate {
+        repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
+        package idle
+        rev "6c1e6a3a1239356e75499a3e25c26a46170f4b36" // branch: rp235x-cortex-m33
+    }
+    stack-size 128
+    priority 3
+    features insomniac
+}
