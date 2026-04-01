@@ -8,9 +8,10 @@ kernel {
     git-crate {
         repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
         package kernel-generic-cortex-m33
-        rev "6c1e6a3a1239356e75499a3e25c26a46170f4b36" // branch: rp235x-cortex-m33
+        rev "3b87e56ea9ff86e16bcc664d47b23a04ed817b8c" // branch: no-mpu-rp235x-cortex-m33
     }
     no-default-features
+    features no-mpu
     stack-size 1024
 }
 
@@ -18,7 +19,7 @@ task super {
     git-crate {
         repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
         package minisuper
-        rev "6c1e6a3a1239356e75499a3e25c26a46170f4b36" // branch: rp235x-cortex-m33
+        rev "3b87e56ea9ff86e16bcc664d47b23a04ed817b8c" // branch: no-mpu-rp235x-cortex-m33
     }
     priority 0
     stack-size 192
@@ -45,7 +46,7 @@ task idle {
     git-crate {
         repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
         package idle
-        rev "6c1e6a3a1239356e75499a3e25c26a46170f4b36" // branch: rp235x-cortex-m33
+        rev "3b87e56ea9ff86e16bcc664d47b23a04ed817b8c" // branch: no-mpu-rp235x-cortex-m33
     }
     stack-size 128
     priority 3
