@@ -3,4 +3,5 @@
 [system]
 source = "git"
 repo = "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
-rev = "09d31a77f47521177cfb3309a6cc71e978779ff8"               # branch: rp235x-cortex-m33
+rev = "263e1686d9f84e27454298cf6e4627b847d863df"               # branch:  no-pmp-rp235x-hazard3  
+

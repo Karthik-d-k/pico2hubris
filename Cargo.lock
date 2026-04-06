@@ -37,6 +37,7 @@ name = "blinky"
 version = "0.1.0"
 dependencies = [
  "cortex-m",
+ "riscv",
  "rp235x-pac",
  "userlib",
 ]
@@ -64,9 +65,15 @@ checksum = "8ec610d8f49840a5b376c69663b6369e71f4b34484b9b2eb29fb918d92516cb9"
 dependencies = [
  "bare-metal",
  "bitfield",
- "embedded-hal",
+ "embedded-hal 0.2.7",
  "volatile-register",
 ]
+
+[[package]]
+name = "critical-section"
+version = "1.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "790eea4361631c5e7d22598ecd5723ff611904e3344ce8720784c93e3d83d40b"
 
 [[package]]
 name = "embedded-hal"
@@ -79,11 +86,18 @@ dependencies = [
 ]
 
 [[package]]
+name = "embedded-hal"
+version = "1.0.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "361a90feb7004eca4019fb28352a9465666b24f840f5c3cddf0ff13920590b89"
+
+[[package]]
 name = "heartbeat"
 version = "0.1.0"
 dependencies = [
  "cortex-m",
  "hubris-notifications",
+ "riscv",
  "rp235x-pac",
  "userlib",
 ]
@@ -91,7 +105,7 @@ dependencies = [
 [[package]]
 name = "hubris-notifications"
 version = "0.1.0"
-source = "git+https://github.com/Karthik-d-k/exhubris-riscv-hazard3?rev=3c1e01345ad06f8fcb8b4769a60e99faefb5032d#3c1e01345ad06f8fcb8b4769a60e99faefb5032d"
+source = "git+https://github.com/Karthik-d-k/exhubris-riscv-hazard3?rev=263e1686d9f84e27454298cf6e4627b847d863df#263e1686d9f84e27454298cf6e4627b847d863df"
 dependencies = [
  "convert_case",
  "ron",
@@ -101,7 +115,7 @@ dependencies = [
 [[package]]
 name = "hubris-task-slots"
 version = "0.1.0"
-source = "git+https://github.com/Karthik-d-k/exhubris-riscv-hazard3?rev=3c1e01345ad06f8fcb8b4769a60e99faefb5032d#3c1e01345ad06f8fcb8b4769a60e99faefb5032d"
+source = "git+https://github.com/Karthik-d-k/exhubris-riscv-hazard3?rev=263e1686d9f84e27454298cf6e4627b847d863df#263e1686d9f84e27454298cf6e4627b847d863df"
 dependencies = [
  "ron",
  "userlib",
@@ -123,11 +137,18 @@ source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "8d5439c4ad607c3c23abf66de8c8bf57ba8adcd1f129e699851a6e43935d339d"
 
 [[package]]
+name = "paste"
+version = "1.0.15"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "57c0d7b74b563b49d38dae00a0c37d4d6de9b432382b2892f0574ddcae73fd0a"
+
+[[package]]
 name = "ping"
 version = "0.1.0"
 dependencies = [
  "cortex-m",
  "hubris-task-slots",
+ "riscv",
  "userlib",
 ]
 
@@ -136,6 +157,7 @@ name = "pong"
 version = "0.1.0"
 dependencies = [
  "cortex-m",
+ "riscv",
  "rp235x-pac",
  "userlib",
 ]
@@ -157,6 +179,36 @@ checksum = "41f2619966050689382d2b44f664f4bc593e129785a36d6ee376ddf37259b924"
 dependencies = [
  "proc-macro2",
 ]
+
+[[package]]
+name = "riscv"
+version = "0.14.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "0f1671c79a01a149fe000af2429ce9ccc8e58cdecda72672355d50e5536b363c"
+dependencies = [
+ "critical-section",
+ "embedded-hal 1.0.0",
+ "paste",
+ "riscv-macros",
+ "riscv-pac",
+]
+
+[[package]]
+name = "riscv-macros"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "e8c4aa1ea1af6dcc83a61be12e8189f9b293c3ba5a487778a4cd89fb060fdbbc"
+dependencies = [
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "riscv-pac"
+version = "0.2.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "8188909339ccc0c68cfb5a04648313f09621e8b87dc03095454f1a11f6c5d436"
 
 [[package]]
 name = "ron"
@@ -249,6 +301,7 @@ name = "uart"
 version = "0.1.0"
 dependencies = [
  "cortex-m",
+ "riscv",
  "rp235x-pac",
  "userlib",
 ]
@@ -277,11 +330,12 @@ dependencies = [
 [[package]]
 name = "userlib"
 version = "0.1.0"
-source = "git+https://github.com/Karthik-d-k/exhubris-riscv-hazard3?rev=3c1e01345ad06f8fcb8b4769a60e99faefb5032d#3c1e01345ad06f8fcb8b4769a60e99faefb5032d"
+source = "git+https://github.com/Karthik-d-k/exhubris-riscv-hazard3?rev=263e1686d9f84e27454298cf6e4627b847d863df#263e1686d9f84e27454298cf6e4627b847d863df"
 dependencies = [
  "bitflags",
  "cfg-if",
  "cortex-m",
+ "riscv",
 ]
 
 [[package]]

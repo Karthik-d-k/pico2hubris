@@ -7,7 +7,10 @@
 #![no_main]
 
 use core::mem::MaybeUninit;
+#[cfg(target_arch = "arm")]
 use cortex_m::asm;
+#[cfg(target_arch = "riscv32")]
+use riscv::asm;
 use rp235x_pac::io_bank0::gpio::gpio_ctrl::FUNCSEL_A;
 use userlib::{ResponseCode, sys_recv_msg_open, sys_reply};
 

@@ -5,10 +5,11 @@ resolver = "2"
 [workspace.dependencies]
 cortex-m = { version = "0.7", default-features = false }
 cortex-m-rt = { version = "0.7", default-features = false }
+riscv = { version = "0.14", default-features = false }
 rp235x-pac = { version = "0.1", default-features = false }
-userlib = { git = "https://github.com/Karthik-d-k/exhubris-riscv-hazard3", rev = "3c1e01345ad06f8fcb8b4769a60e99faefb5032d", default-features = false }           # branch: rp235x-cortex-m33
-hubris-task-slots = { git = "https://github.com/Karthik-d-k/exhubris-riscv-hazard3", rev = "3c1e01345ad06f8fcb8b4769a60e99faefb5032d", default-features = false }
-hubris-notifications = { git = "https://github.com/Karthik-d-k/exhubris-riscv-hazard3", rev = "3c1e01345ad06f8fcb8b4769a60e99faefb5032d", default-features = false }
+userlib = { git = "https://github.com/Karthik-d-k/exhubris-riscv-hazard3", rev = "263e1686d9f84e27454298cf6e4627b847d863df", default-features = false }           # branch: no-pmp-rp235x-hazard3
+hubris-task-slots = { git = "https://github.com/Karthik-d-k/exhubris-riscv-hazard3", rev = "263e1686d9f84e27454298cf6e4627b847d863df", default-features = false }
+hubris-notifications = { git = "https://github.com/Karthik-d-k/exhubris-riscv-hazard3", rev = "263e1686d9f84e27454298cf6e4627b847d863df", default-features = false }
 
 [profile.release]
 debug = true

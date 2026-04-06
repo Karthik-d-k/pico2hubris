@@ -7,11 +7,11 @@ board rp2350-pico2 {
 kernel {
     git-crate {
         repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
-        package kernel-generic-cortex-m33
-        rev "3b87e56ea9ff86e16bcc664d47b23a04ed817b8c" // branch: no-mpu-rp235x-cortex-m33
+        package kernel-generic-hazard3
+        rev "263e1686d9f84e27454298cf6e4627b847d863df" // branch: no-pmp-rp235x-hazard3
     }
     no-default-features
-    features no-mpu
+    features no-pmp
     stack-size 1024
 }
 
@@ -19,7 +19,7 @@ task super {
     git-crate {
         repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
         package minisuper
-        rev "3b87e56ea9ff86e16bcc664d47b23a04ed817b8c" // branch: no-mpu-rp235x-cortex-m33
+        rev "263e1686d9f84e27454298cf6e4627b847d863df" // branch: no-pmp-rp235x-hazard3
     }
     priority 0
     stack-size 192
@@ -46,7 +46,7 @@ task idle {
     git-crate {
         repo "https://github.com/Karthik-d-k/exhubris-riscv-hazard3"
         package idle
-        rev "3b87e56ea9ff86e16bcc664d47b23a04ed817b8c" // branch: no-mpu-rp235x-cortex-m33
+        rev "263e1686d9f84e27454298cf6e4627b847d863df" // branch: no-pmp-rp235x-hazard3
     }
     stack-size 128
     priority 3

@@ -32,7 +32,7 @@ build:
     hubake pack-hex .work/{{app}}/final/ {{app}}-output.hex -g {{app}}-gdbconfig
 
 reboot:
-    picotool reboot -u -c arm
+    picotool reboot -u -c riscv
 
 flash:
     humility-pico -a {{app}}-build.zip flash -F
@@ -41,12 +41,12 @@ flash:
 entry-points:
     @for elf in .work/{{app}}/final/*; do \
         name=$(basename "$elf"); \
-        ep=$(arm-none-eabi-readelf -h "$elf" | grep 'Entry point address' | awk '{print $$4}'); \
+        ep=$(riscv32-unknown-elf-readelf -h "$elf" | grep 'Entry point address' | awk '{print $$4}'); \
         printf "%-15s Entry Point: %s\n" "$name" "$ep"; \
     done
 
 gdb:
-    arm-none-eabi-gdb -x {{app}}-gdbconfig
+    riscv32-unknown-elf-gdb -x {{app}}-gdbconfig
 
 openocd:
     openocd-pico -f openocd.cfg -c "program {{app}}-output.hex verify"

@@ -4,9 +4,14 @@ version = "0.1.0"
 edition = "2024"
 
 [dependencies]
-cortex-m = { workspace = true, features = ["inline-asm"] }
 userlib = { workspace = true, features = ["no-panic"] }
 rp235x-pac = { workspace = true }
+
+[target.'cfg(target_arch = "arm")'.dependencies]
+cortex-m = { workspace = true, features = ["inline-asm"] }
+
+[target.'cfg(target_arch = "riscv32")'.dependencies]
+riscv = { workspace = true }
 
 [[bin]]
 name = "blinky"

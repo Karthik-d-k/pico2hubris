@@ -1,5 +1,5 @@
-chip "cortex-m33"
-target-triple "thumbv8m.main-none-eabihf"
+chip "hazard3"
+target-triple "riscv32imac-unknown-none-elf"
 vector-table-size 0x48 // .pico-sdk\sdk\2.1.1\src\rp2350\hardware_regs\include\hardware\platform_defs.h
 probe-rs-name "RP235x"
 

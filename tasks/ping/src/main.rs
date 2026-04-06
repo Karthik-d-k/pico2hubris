@@ -6,7 +6,10 @@
 #![no_std]
 #![no_main]
 
+#[cfg(target_arch = "arm")]
 use cortex_m::asm;
+#[cfg(target_arch = "riscv32")]
+use riscv::asm;
 use hubris_task_slots::SLOTS;
 use userlib::sys_send;
 
