@@ -7,10 +7,13 @@ UART, SPI, GPIO, and other hardware interfaces while developing applications on 
 
 ## Applications
 
-- **blinky** - LED blink demo
-- **heartbeat** - Heartbeat echo app
-- **pingpong** - Inter-task ping-pong messaging
-- **uart** - UART communication
+- **blinky** - Blinks the on-board LED (GPIO25) in a simple on/off loop using busy-wait delays. A minimal single-task app that demonstrates bare-metal GPIO configuration via the RP2350 PAC.
+
+- **heartbeat** - Two-task app combining a heartbeat LED pattern (two quick blinks followed by a 1s pause) with an uptime reporter that prints elapsed seconds over UART0 every 2 seconds. Demonstrates kernel timer syscalls (`sys_set_timer` / `sys_recv_notification`) for deadline-based scheduling instead of busy-waiting.
+
+- **pingpong** - Two-task IPC demo. The *ping* task sends an incrementing counter (1-10) to the *pong* task via `sys_send`. The *pong* task receives the message, blinks the LED that many times, and replies. Demonstrates Hubris inter-task messaging, task slots, and generation-aware fault recovery.
+
+- **uart** - Single-task UART echo. Configures UART0 (PL011) at 115200 8N1 on GPIO0/GPIO1, sends a greeting, then echoes every received byte back to the host. Demonstrates bare-metal UART peripheral setup and polled TX/RX.
 
 ## Build & Flash
 
