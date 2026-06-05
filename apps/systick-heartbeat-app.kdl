@@ -1,4 +1,4 @@
-app heartbeat
+app systick-heartbeat
 
 board rp2350-pico2 {
     chip "proj:chips/rp2350.kdl"

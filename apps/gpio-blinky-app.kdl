@@ -1,6 +1,6 @@
 // App name is used for output files etc. It must be the first non-blank
 // non-comment line in the file.
-app blinky
+app gpio-blinky
 
 // Currently the board information is inlined. It would be nice to refer to an
 // external file, like we already do for chip definitions.

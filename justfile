@@ -1,5 +1,5 @@
 # Default app name (override with: just app=myapp <recipe>)
-app := "blinky"
+app := "gpio-blinky"
 
 # Common aliases
 alias b := build
@@ -21,7 +21,7 @@ help:
     @echo ""
     @echo "Usage: just [app=<name>] <recipe>"
     @echo ""
-    @echo "Override the default app (blinky) for any recipe:"
+    @echo "Override the default app (gpio-blinky) for any recipe:"
     @echo "  just app=myapp build"
     @echo "  just app=myapp flash"
     @echo ""

@@ -7,27 +7,27 @@ UART, SPI, GPIO, and other hardware interfaces while developing applications on 
 
 ## Applications
 
-- **blinky** - Blinks the on-board LED (GPIO25) in a simple on/off loop using busy-wait delays. A minimal single-task app that demonstrates bare-metal GPIO configuration via the RP2350 PAC.
+- **gpio-blinky** - Blinks the on-board LED (GPIO25) in a simple on/off loop using busy-wait delays. A minimal single-task app that demonstrates bare-metal GPIO configuration via the RP2350 PAC.
 
-- **heartbeat** - Two-task app combining a heartbeat LED pattern (two quick blinks followed by a 1s pause) with an uptime reporter that prints elapsed seconds over UART0 every 2 seconds. Demonstrates kernel timer syscalls (`sys_set_timer` / `sys_recv_notification`) for deadline-based scheduling instead of busy-waiting.
+- **systick-heartbeat** - Two-task app combining a heartbeat LED pattern (two quick blinks followed by a 1s pause) with an uptime reporter that prints elapsed seconds over UART0 every 2 seconds. Demonstrates kernel timer syscalls (`sys_set_timer` / `sys_recv_notification`) for deadline-based scheduling instead of busy-waiting.
 
-- **pingpong** - Two-task IPC demo. The *ping* task sends an incrementing counter (1-10) to the *pong* task via `sys_send`. The *pong* task receives the message, blinks the LED that many times, and replies. Demonstrates Hubris inter-task messaging, task slots, and generation-aware fault recovery.
+- **ipc-pingpong** - Two-task IPC demo. The *ping* task sends an incrementing counter (1-10) to the *pong* task via `sys_send`. The *pong* task receives the message, blinks the LED that many times, and replies. Demonstrates Hubris inter-task messaging, task slots, and generation-aware fault recovery.
 
-- **uart** - Single-task UART echo. Configures UART0 (PL011) at 115200 8N1 on GPIO0/GPIO1, sends a greeting, then echoes every received byte back to the host. Demonstrates bare-metal UART peripheral setup and polled TX/RX.
+- **uart-echo** - Single-task UART echo. Configures UART0 (PL011) at 115200 8N1 on GPIO0/GPIO1, sends a greeting, then echoes every received byte back to the host. Demonstrates bare-metal UART peripheral setup and polled TX/RX.
 
 ## Build & Flash
 
 This project uses [just](https://github.com/casey/just) as a command runner. See the `Justfile` for all available recipes.
 
 ```sh
-# Build an app (default: blinky)
+# Build an app (default: gpio-blinky)
 just build
 
 # Build a specific app
-just app=uart build
+just app=uart-echo build
 
 # Flash to the board
-just app=uart flash
+just app=uart-echo flash
 
 # See all recipes
 just help
