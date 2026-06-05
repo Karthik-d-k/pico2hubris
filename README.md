@@ -1,19 +1,24 @@
 ## pico2hubris
 
-Hubris OS experiments on the Raspberry Pi Pico 2 (RP2350) using the ARM Cortex-M33 core.
-
-This repository is a learning playground for exploring embedded communication peripherals such as
-UART, SPI, GPIO, and other hardware interfaces while developing applications on top of the Hubris OS kernel.
+Hubris OS experiments on the Raspberry Pi Pico 2 (RP2350, ARM Cortex-M33) — exploring embedded peripherals (UART, SPI, GPIO, ...) on top of the Hubris kernel.
 
 ## Applications
 
-- **gpio-blinky** - Blinks the on-board LED (GPIO25) in a simple on/off loop using busy-wait delays. A minimal single-task app that demonstrates bare-metal GPIO configuration via the RP2350 PAC.
+| App | Peripheral | Description |
+|-----|-----------|-------------|
+| `gpio-blinky` | GPIO | Blink onboard LED (GPIO25) with busy-wait delays |
+| `systick-heartbeat` | SysTick | Heartbeat LED pattern + UART uptime reporter using kernel timers |
+| `uart-echo` | UART | UART0 echo at 115200 8N1 — polled TX/RX |
+| `ipc-pingpong` | IPC | Ping/pong counter over `sys_send` with fault recovery |
 
-- **systick-heartbeat** - Two-task app combining a heartbeat LED pattern (two quick blinks followed by a 1s pause) with an uptime reporter that prints elapsed seconds over UART0 every 2 seconds. Demonstrates kernel timer syscalls (`sys_set_timer` / `sys_recv_notification`) for deadline-based scheduling instead of busy-waiting.
+## Prerequisites
 
-- **ipc-pingpong** - Two-task IPC demo. The *ping* task sends an incrementing counter (1-10) to the *pong* task via `sys_send`. The *pong* task receives the message, blinks the LED that many times, and replies. Demonstrates Hubris inter-task messaging, task slots, and generation-aware fault recovery.
-
-- **uart-echo** - Single-task UART echo. Configures UART0 (PL011) at 115200 8N1 on GPIO0/GPIO1, sends a greeting, then echoes every received byte back to the host. Demonstrates bare-metal UART peripheral setup and polled TX/RX.
+- [**`Rust toolchain`**](https://rust-lang.org/tools/install/) — pinned via `rust-toolchain.toml`
+- [**`just`**](https://github.com/casey/just) — command runner
+- [**`hubake`**](https://github.com/cbiffle/exhubris-demo/) - Hubris build tool
+- [**`humility-pico`**](https://github.com/thenewwazoo/humility/tree/bmatt/update-probe-rs) — Hubris debug tool
+- [**`openocd-pico`**](https://github.com/raspberrypi/pico-sdk-tools/releases) — on-chip debugger
+- **`USB-UART serial adapter`** — Pico Debug Probe (recommended) or FTDI-based adapter
 
 ## Build & Flash
 
