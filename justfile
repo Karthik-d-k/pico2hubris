@@ -1,6 +1,9 @@
 # Default app name (override with: just app=myapp <recipe>)
 app := "gpio-blinky"
 
+# Default UART port (override with: just port=my_port uart)
+port := "COM3"
+
 # Common aliases
 alias b := build
 alias r := reboot
@@ -9,6 +12,7 @@ alias g := gdb
 alias o := openocd
 alias e := entry-points
 alias c := clean
+alias u:= uart
 
 default: help
 
@@ -51,8 +55,11 @@ gdb:
 openocd:
     openocd-pico -f openocd.cfg -c "program {{app}}-output.hex verify"
 
+uart:
+    plink.exe -serial {{port}} -sercfg 115200,8,n,1,N
+
 clean:
     cargo clean
     rm -rf .work/
-    rm -rf *-build.zip 
+    rm -rf *-build.zip
     rm -f *-output.hex *-gdbconfig
