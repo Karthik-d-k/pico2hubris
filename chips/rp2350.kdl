@@ -35,12 +35,12 @@ peripheral "sio" {
 
 peripheral "io_bank0" {
     base 0x4002_8000
-    size 0x400       // Rounded from 0x320 (800 bytes) 
+    size 0x400       // Rounded from 0x320 (800 bytes)
 }
 
 peripheral "pads_bank0" {
     base 0x4003_8000
-    size 0x100       // Rounded from 0xCC (204 bytes) 
+    size 0x100       // Rounded from 0xCC (204 bytes)
 }
 
 peripheral "resets" {
@@ -51,4 +51,9 @@ peripheral "resets" {
 peripheral "uart0" {
     base 0x4007_0000
     size 0x1000
+}
+
+peripheral "pwm" {
+    base 0x400a_8000
+    size 0x100       // Rounded from 0xf0 (240 bytes)
 }

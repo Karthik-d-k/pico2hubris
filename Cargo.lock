@@ -150,6 +150,16 @@ dependencies = [
 ]
 
 [[package]]
+name = "pwm"
+version = "0.1.0"
+dependencies = [
+ "cortex-m",
+ "hubris-notifications",
+ "rp235x-pac",
+ "userlib",
+]
+
+[[package]]
 name = "quote"
 version = "1.0.45"
 source = "registry+https://github.com/rust-lang/crates.io-index"

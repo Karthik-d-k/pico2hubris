@@ -10,6 +10,7 @@ Hubris OS experiments on the Raspberry Pi Pico 2 (RP2350, ARM Cortex-M33) — ex
 | `systick-heartbeat` | SysTick | Heartbeat LED pattern + UART uptime reporter using kernel timers |
 | `uart-echo` | UART | UART0 echo at 115200 8N1 — polled TX/RX |
 | `ipc-pingpong` | IPC | Ping/pong counter over `sys_send` with fault recovery |
+| `pwm-fade` | PWM | Fades the onboard LED brightness up and down using PWM |
 
 ## Prerequisites
 
